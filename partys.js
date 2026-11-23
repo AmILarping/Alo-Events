@@ -20,14 +20,14 @@
 .alo-pt{--pt-lime:var(--lime,#E0FF22);--pt-red:var(--red,#FF2E4D);--pt-cyan:var(--cyan,#1EF2FF);
   --pt-d:var(--display,"Anton",Impact,sans-serif);--pt-t:var(--text,"Sora",system-ui,sans-serif);
   display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:clamp(14px,2vw,22px);font-family:var(--pt-t);color:#fff}
-.alo-pt-card{--c:var(--pt-cyan);position:relative;display:flex;flex-direction:column;background:#0f0f12;border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s}
+.alo-pt-card{--c:var(--pt-cyan);position:relative;display:flex;flex-direction:column;background:#0f0f12;border:1px solid rgba(255,255,255,.1);border-radius:4px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s}
 .alo-pt-card[data-r="ALÓ"]{--c:var(--pt-lime)}.alo-pt-card[data-r="Pasaporte"]{--c:var(--pt-red)}
-@media (hover:hover){.alo-pt-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 18px 40px -18px var(--c)}}
+@media (hover:hover){.alo-pt-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 0 0 1px var(--c)}}
 .alo-pt-img{position:relative;aspect-ratio:4/5;background:#18181d;overflow:hidden}
 .alo-pt-img img{width:100%;height:100%;object-fit:cover;display:block}
-.alo-pt-img .alo-pt-ph{position:absolute;inset:0;display:grid;place-items:center;font:400 clamp(34px,5vw,52px)/1 var(--pt-d);color:var(--c);text-shadow:0 0 18px var(--c);letter-spacing:.03em}
-.alo-pt-date{position:absolute;left:12px;top:12px;background:rgba(0,0,0,.78);border:1px solid var(--c);border-radius:12px;padding:7px 11px 6px;text-align:center;line-height:1;backdrop-filter:blur(6px)}
-.alo-pt-date b{display:block;font:400 30px/1 var(--pt-d);color:var(--c)}
+.alo-pt-img .alo-pt-ph{position:absolute;inset:0;display:grid;place-items:center;font:400 clamp(34px,5vw,52px)/1 var(--pt-d);color:var(--c);letter-spacing:.03em}
+.alo-pt-date{position:absolute;left:12px;top:12px;background:rgba(0,0,0,.78);border:0;border-radius:2px;padding:8px 11px 7px;text-align:center;line-height:1;background:var(--c);color:#0a0a0a}
+.alo-pt-date b{display:block;font:400 30px/1 var(--pt-d);color:#0a0a0a}
 .alo-pt-date span{display:block;margin-top:3px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 .alo-pt-sold{position:absolute;right:12px;top:12px;background:var(--pt-red);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
 .alo-pt-body{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1}
@@ -36,12 +36,16 @@
 .alo-pt-meta{font-size:14px;color:rgba(255,255,255,.72)}
 .alo-pt-text{font-size:14px;line-height:1.5;color:rgba(255,255,255,.82);margin:4px 0 0;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .alo-pt-cta{margin-top:auto;padding-top:12px}
-.alo-pt-cta a{display:inline-flex;align-items:center;gap:8px;background:var(--c);color:#111;font-weight:700;font-size:14px;text-decoration:none;padding:11px 18px;border-radius:999px;transition:transform .15s}
+.alo-pt-cta a{display:inline-flex;align-items:center;gap:8px;background:var(--c);color:#111;font-weight:700;font-size:14px;text-decoration:none;padding:11px 18px;border-radius:3px;transition:transform .15s}
 .alo-pt-cta a:active{transform:scale(.97)}
 .alo-pt.is-past .alo-pt-img img{filter:grayscale(.35) brightness(.85)}
-.alo-pt-leer{grid-column:1/-1;border:1px dashed rgba(255,255,255,.2);border-radius:16px;padding:36px 20px;text-align:center;color:rgba(255,255,255,.75)}
+.alo-pt-leer{grid-column:1/-1;border:1px dashed rgba(255,255,255,.2);border-radius:4px;padding:36px 20px;text-align:center;color:rgba(255,255,255,.75)}
 .alo-pt-leer b{display:block;font:400 28px/1.1 var(--pt-d);text-transform:uppercase;color:#fff;margin-bottom:6px}
 .alo-pt-hinweis{grid-column:1/-1;font-size:12px;color:rgba(255,255,255,.5)}
+.alo-pt-card.is-ph .alo-pt-img{aspect-ratio:4/3}
+@media (max-width:600px){.alo-pt-card.is-ph .alo-pt-img{aspect-ratio:2/1}}
+.alo-pt-card.is-ph .alo-pt-date b{font-size:24px}
+.alo-pt-todo{background:#FFF200;color:#0A0A0A;padding:.06em .32em;border-radius:2px;font:700 .82em/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:none;letter-spacing:0}
 @media (prefers-reduced-motion:reduce){.alo-pt-card{transition:none}}`;
 
   function stil() {
@@ -77,6 +81,23 @@
     ${cta}
   </div>
 </article>`;
+  }
+
+  // Präsentations-Platzhalter (data-platzhalter am div): zeigt, wo Partys aus dem Admin-Bereich erscheinen
+  function platzhalter() {
+    const t = s => `<mark class="alo-pt-todo">${s}</mark>`;
+    const k = r => `<article class="alo-pt-card is-ph" data-r="${r}">
+  <div class="alo-pt-img"><span class="alo-pt-ph" aria-hidden="true">${r === "Pasaporte" ? "PASAPORTE" : "ALÓ"}</span><div class="alo-pt-date"><b>TT</b><span>Monat</span></div></div>
+  <div class="alo-pt-body">
+    <span class="alo-pt-reihe">${r}</span>
+    <h3>${t("Titel der Party")}</h3>
+    <div class="alo-pt-meta">${t("Datum · Uhrzeit")}</div>
+    <div class="alo-pt-meta">${t("Location · Stadt")}</div>
+    <div class="alo-pt-cta"><a href="${TICKETS}" target="_blank" rel="noopener">Tickets sichern <span aria-hidden="true">→</span></a></div>
+  </div>
+</article>`;
+    return k("ALÓ") + k("Pasaporte") + k("ALÓ") +
+      `<p class="alo-pt-hinweis"><mark class="alo-pt-todo">PLATZHALTER</mark> Hier erscheinen die Partys automatisch, sobald Tamara sie im Admin-Bereich (/admin/partys) anlegt.</p>`;
   }
 
   function schema(liste) {
@@ -137,7 +158,9 @@
       let liste = (vergangen ? d.vergangen : d.kommend) || [];
       if (reihe) liste = liste.filter(p => p.reihe === reihe);
       if (limit > 0) liste = liste.slice(0, limit);
-      if (!liste.length) {
+      if (!liste.length && el.hasAttribute("data-platzhalter")) {
+        el.innerHTML = platzhalter();
+      } else if (!liste.length) {
         const leer = el.dataset.leer || (vergangen ? "Noch keine vergangenen Partys." : "Neue Termine folgen bald.");
         el.innerHTML = `<div class="alo-pt-leer"><b>Stay tuned</b>${esc(leer)}</div>`;
       } else {
@@ -146,6 +169,7 @@
         if (!vergangen && el.dataset.schema !== "aus" && !d.demo) schema(liste);
       }
     } catch {
+      if (el.hasAttribute("data-platzhalter")) { el.innerHTML = platzhalter(); return; }
       el.innerHTML = `<div class="alo-pt-leer"><b>Partys</b>Die Termine konnten gerade nicht geladen werden. Alle Tickets gibt es bei <a href="${TICKETS}" style="color:inherit">Tickettailor</a>.</div>`;
     } finally {
       el.removeAttribute("aria-busy");
